@@ -22,6 +22,7 @@ const Login = () => {
                 password,
             });
     
+            console.log(response)
             // Store access token and refresh token
             localStorage.setItem('authToken', response.data.token); // Access token
             localStorage.setItem('refreshToken', response.data.refresh_token); // Refresh token

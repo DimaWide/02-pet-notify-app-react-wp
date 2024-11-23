@@ -6,6 +6,7 @@ import Login from './components/auth/Login';
 import Register from './components/auth/Register';
 import Logout from './components/auth/Logout';
 import PrivateRoute from './components/auth/PrivateRoute';
+import 'semantic-ui-css/semantic.min.css';
 
 function App() {
     return (

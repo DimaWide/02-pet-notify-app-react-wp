@@ -1,0 +1,43 @@
+
+
+.spinner {
+    border: 4px solid rgba(0, 0, 0, 0.1);
+    border-left-color: #09f;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    animation: spin 1s linear infinite;
+}
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+
+/* Логотип */
+.header .logo {
+    font-weight: bold;
+    font-size: 1.6rem;
+    color: #2185d0;
+}
+
+/* Мобильная кнопка меню */
+.header .mobile-menu-button {
+    display: none !important;
+}
+
+/* Стили для мобильного меню */
+@media screen and (max-width: 768px) {
+    .header .desktop-menu {
+        display: none !important;
+    }
+
+    .header .mobile-menu-button {
+        display: block !important;
+    }
+
+    .header .mobile-menu {
+        display: block !important;
+    }
+}

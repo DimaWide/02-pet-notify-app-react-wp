@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import { Menu, Container, Dropdown, Button, Icon } from 'semantic-ui-react';
 
 const Header = () => {
     const navigate = useNavigate();
@@ -16,104 +17,62 @@ const Header = () => {
     };
 
     return (
-        <header className="bg-blue-600 text-white shadow-md">
-            <div className="container mx-auto flex justify-between items-center py-4 px-6">
+        <Menu borderless size="large" className="header  ui fixed top">
+            <Container>
                 {/* Логотип */}
-                <div className="text-2xl font-bold">
-                    <Link to="/">Логотип</Link>
-                </div>
+                <Menu.Item header>
+                    <Link to="/" className="logo">
+                        <Icon name="home" /> MyApp
+                    </Link>
+                </Menu.Item>
 
                 {/* Навигация для десктопа */}
-                <nav className="hidden md:flex space-x-6 items-center">
-                    <Link to="/" className="hover:text-blue-300 transition duration-300">
-                        Home
-                    </Link>
+                <Menu.Menu position="right" className="desktop-menu">
+                    <Menu.Item as={Link} to="/" content="Home" />
                     {!authToken ? (
                         <>
-                            <Link to="/login" className="hover:text-blue-300 transition duration-300">
-                                Login
-                            </Link>
-                            <Link to="/register" className="hover:text-blue-300 transition duration-300">
-                                Register
-                            </Link>
+                            <Menu.Item as={Link} to="/login" content="Login" />
+                            <Menu.Item as={Link} to="/register" content="Register" />
                         </>
                     ) : (
-                        <button
-                            onClick={handleLogout}
-                            className="hover:text-blue-300 transition duration-300"
-                        >
-                            Logout
-                        </button>
+                        <Dropdown item text="Profile">
+                            <Dropdown.Menu>
+                                <Dropdown.Item as={Link} to="/profile">Profile</Dropdown.Item>
+                                <Dropdown.Item onClick={handleLogout}>Logout</Dropdown.Item>
+                            </Dropdown.Menu>
+                        </Dropdown>
                     )}
-                </nav>
+                </Menu.Menu>
 
-                {/* Кнопка для мобильного меню */}
-                <div className="md:hidden">
-                    <button
-                        onClick={toggleMobileMenu}
-                        className="text-white focus:outline-none"
-                        aria-label="Toggle navigation menu"
-                    >
-                        <svg
-                            className="w-6 h-6"
-                            fill="none"
-                            stroke="currentColor"
-                            viewBox="0 0 24 24"
-                            xmlns="http://www.w3.org/2000/svg"
-                        >
-                            <path
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                                strokeWidth={2}
-                                d="M4 6h16M4 12h16M4 18h16"
-                            />
-                        </svg>
-                    </button>
-                </div>
-            </div>
+                {/* Мобильная кнопка */}
+                <Menu.Item
+                    position="right"
+                    className="mobile-menu-button"
+                    onClick={toggleMobileMenu}
+                >
+                    <Icon name="bars" size="large" />
+                </Menu.Item>
+            </Container>
 
             {/* Мобильное меню */}
             {isMobileMenuOpen && (
-                <nav className="md:hidden bg-blue-700 py-4">
-                    <ul className="flex flex-col space-y-2 items-center">
-                        <li>
-                            <Link to="/" className="hover:text-blue-300 transition duration-300">
-                                Home
-                            </Link>
-                        </li>
-                        {!authToken ? (
-                            <>
-                                <li>
-                                    <Link
-                                        to="/login"
-                                        className="hover:text-blue-300 transition duration-300"
-                                    >
-                                        Login
-                                    </Link>
-                                </li>
-                                <li>
-                                    <Link
-                                        to="/register"
-                                        className="hover:text-blue-300 transition duration-300"
-                                    >
-                                        Register
-                                    </Link>
-                                </li>
-                            </>
-                        ) : (
-                            <li>
-                                <button
-                                    onClick={handleLogout}
-                                    className="hover:text-blue-300 transition duration-300"
-                                >
-                                    Logout
-                                </button>
-                            </li>
-                        )}
-                    </ul>
-                </nav>
+                <Menu vertical fluid className="mobile-menu">
+                    <Menu.Item as={Link} to="/" content="Home" />
+                    {!authToken ? (
+                        <>
+                            <Menu.Item as={Link} to="/login" content="Login" />
+                            <Menu.Item as={Link} to="/register" content="Register" />
+                        </>
+                    ) : (
+                        <Menu.Item>
+                            <Button fluid color="blue" onClick={handleLogout}>
+                                <Icon name="sign-out" /> Logout
+                            </Button>
+                        </Menu.Item>
+                    )}
+                </Menu>
             )}
-        </header>
+        </Menu>
     );
 };
 
