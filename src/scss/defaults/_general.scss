@@ -22,6 +22,11 @@ body.overflow-hidden {
     overflow: hidden;
 }
 
+html,
+body {
+  height: auto;
+}
+
 .swd-body-inner {
     overflow-x: hidden;
     overflow-y: hidden;
