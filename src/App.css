@@ -41,3 +41,24 @@
         display: block !important;
     }
 }
+
+
+@keyframes blink {
+    0% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.5;
+    }
+    100% {
+        opacity: 0.5;
+    }
+}
+
+.data-list.active {
+    animation: blink 1s infinite; /* Анимация мигания, 1 секунда на цикл */
+    pointer-events: none; /* Запрещаем взаимодействие с элементами списка во время загрузки */
+}
+.active {
+
+}

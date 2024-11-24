@@ -4,6 +4,7 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import './App.css'; 
+import './scss/styles.scss'; // Добавьте стили при необходимости
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(

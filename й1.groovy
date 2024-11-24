@@ -1,14 +1,19 @@
-
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css'; // Styles for Quill
+import { Button, Input, List, Pagination, Message, Loader } from 'semantic-ui-react'; // Importing Semantic UI components
 
 const API_URL = 'http://dev.wp-blog/wp-json/myapi/v1';
 
 const Notification = ({ message, type }) => (
-    <div className={`notification ${type}`}>{message}</div>
+    <Message
+        success={type === 'success'}
+        error={type === 'error'}
+        header={type === 'success' ? 'Success!' : 'Error!'}
+        content={message}
+    />
 );
 
 const NotesApp = () => {
@@ -28,7 +33,7 @@ const NotesApp = () => {
     const [searchQuery, setSearchQuery] = useState('');
     const [debouncedQuery, setDebouncedQuery] = useState(searchQuery);
 
-    // Дебаунс, чтобы ограничить количество запросов
+    // Debounce search input to limit the number of requests
     useEffect(() => {
         const handler = setTimeout(() => setDebouncedQuery(searchQuery), 500);
         return () => clearTimeout(handler);
@@ -93,9 +98,8 @@ const NotesApp = () => {
                 params: { page: pageNum, per_page: 5 },
                 cancelToken: source.token,
             });
-            setNotes(response.data.data); // Теперь получаем записи из data
-            //console.log(response.data.data)
-            setTotalPages(parseInt(response.data.total_pages, 10)); // Обновили total_pages
+            setNotes(response.data.data); // Update the notes data
+            setTotalPages(parseInt(response.data.total_pages, 10)); // Update total pages
         } catch (error) {
             if (axios.isCancel(error)) {
                 console.log('Request canceled:', error.message);
@@ -114,9 +118,9 @@ const NotesApp = () => {
         try {
             const response = await axios.get(`${API_URL}/news/${id}`);
             const note = response.data;
-            setCurrentNote(note);
-            setTitle(note.post_title || note.title?.rendered || '');
-            setContent(note.post_content || note.content?.rendered || '');
+            setCurrentNote(note.data);
+            setTitle(note.data.post_title || note.data.title?.rendered || '');
+            setContent(note.data.post_content || note.data.content?.rendered || '');
             setIsEditing(true);
         } catch {
             setError('Ошибка при загрузке заметки');
@@ -173,7 +177,6 @@ const NotesApp = () => {
         setIsEditing(false);
         setCurrentNote(null);
     };
-    // console.log(Array.isArray(notes));
 
     return (
         <div>
@@ -186,55 +189,45 @@ const NotesApp = () => {
                 <h2>News Posts</h2>
 
                 <div className="search-bar">
-                    <input
-                        type="text"
+                    <Input
+                        icon="search"
+                        placeholder="Поиск заметок..."
                         value={searchQuery}
                         onChange={(e) => setSearchQuery(e.target.value)}
-                        placeholder="Поиск заметок..."
                     />
                 </div>
 
-                {isLoading ? (
-                    <div className="spinner"></div>
+                {false ? (
+                    <Loader active inline="centered" />
                 ) : !Array.isArray(notes) ? (
                     <p>Ошибка: Заметки не являются массивом</p>
                 ) : notes.length === 0 ? (
                     <p>Нет доступных заметок</p>
                 ) : (
-                    <ul className="notes-list">
+                    <List className={`data-list ${isLoading ? 'active' : ''}`}>
                         {notes.map((note) => (
-                            <li key={note.ID}>
-                                <h3>{note.post_title}</h3>
+                            <List.Item key={note.ID}>
+                                <List.Header>{note.post_title}</List.Header>
                                 <p
                                     dangerouslySetInnerHTML={{
                                         __html: note.post_excerpt || note.post_content.substring(0, 150),
                                     }}
                                 />
-                                <button onClick={() => fetchNoteById(note.ID)}>Редактировать</button>
-                                <button onClick={() => confirmDelete(note.ID)}>Удалить</button>
-                            </li>
+                                <Button onClick={() => fetchNoteById(note.ID)}>Редактировать</Button>
+                                <Button color="red" onClick={() => confirmDelete(note.ID)}>
+                                    Удалить
+                                </Button>
+                            </List.Item>
                         ))}
-                    </ul>
+                    </List>
                 )}
 
-                <div className="pagination">
-                    <button
-                        onClick={() => setPage((prev) => Math.max(1, prev - 1))}
-                        disabled={page === 1}
-                    >
-                        Назад
-                    </button>
-                    <span>
-                        Страница {page} из {totalPages > 0 ? totalPages : '...'}
-                    </span>
-                    <button
-                        onClick={() => setPage((prev) => Math.min(totalPages, prev + 1))}
-                        disabled={page >= totalPages || totalPages === 0}
-                    >
-                        Вперед
-                    </button>
 
-                </div>
+                <Pagination
+                    totalPages={totalPages}
+                    activePage={page}
+                    onPageChange={(_, { activePage }) => setPage(activePage)}
+                />
             </div>
 
             <div>
@@ -251,7 +244,7 @@ const NotesApp = () => {
                 >
                     <div>
                         <label>Название</label>
-                        <input
+                        <Input
                             type="text"
                             value={title}
                             onChange={(e) => setTitle(e.target.value)}
@@ -291,10 +284,14 @@ const NotesApp = () => {
                             placeholder="Введите содержимое заметки..."
                         />
                     </div>
-                    <button type="submit">
+                    <Button type="submit" primary>
                         {isEditing ? 'Сохранить изменения' : 'Создать'}
-                    </button>
-                    {isEditing && <button type="button" onClick={resetForm}>Отменить</button>}
+                    </Button>
+                    {isEditing && (
+                        <Button type="button" secondary onClick={resetForm}>
+                            Отменить
+                        </Button>
+                    )}
                 </form>
             </div>
         </div>

@@ -1,0 +1,226 @@
+* {
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+
+    font-family: 'Lora';
+}
+
+body {
+    font-family: 'Parkinsans';
+    font-family: 'Lora';
+    font-size: 16px;
+    line-height: 150%;
+    overflow-x: hidden;
+    color: #222;
+    background: #fff;
+    position: relative;
+}
+
+
+html.overflow-hidden,
+body.overflow-hidden {
+    overflow: hidden;
+}
+
+.swd-body-inner {
+    overflow-x: hidden;
+    overflow-y: hidden;
+}
+
+img,
+svg {
+    max-width: 100%;
+    height: auto;
+}
+
+iframe {
+    max-width: 100%;
+}
+
+p,
+ul,
+ol {
+    margin-bottom: 20px;
+}
+
+p:last-child {
+    margin-bottom: 0;
+}
+
+
+input,
+textarea {
+    border-radius: 0; // Prevent IOS add border-radius by default to all input elements
+    -webkit-text-size-adjust: 100%;
+    zoom: reset;
+
+    /* Disables zooming on input focus for iPhone */
+    &::placeholder {
+        opacity: 1;
+        transition: 0.2s ease;
+    }
+
+    &:focus {
+        &::placeholder {
+            opacity: 0;
+        }
+    }
+}
+
+
+a {
+    -webkit-transition: all .25s ease;
+    -o-transition: all .25s ease;
+    transition: all .25s ease;
+
+    &:focus {
+        outline: none;
+    }
+}
+
+.swd-body-inner {
+    position: relative;
+    z-index: 1;
+    // display: flex;
+    // min-height: 100vh;
+    // flex-direction: column;
+    // justify-content: space-between
+}
+
+.swd-section {
+    position: relative;
+}
+
+.swd-container {
+    width: 100%;
+    max-width: 1396px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 50px;
+    padding-right: 50px;
+}
+
+
+
+
+
+
+
+
+
+h1,
+.swd-h1,
+h2,
+.swd-h2,
+h3,
+.swd-h3,
+h4,
+.swd-h4,
+h5,
+.swd-h5,
+h6,
+.swd-h6 {
+    font-weight: bold;
+    line-height: 155%;
+    // margin-top: 40px;
+    margin-bottom: 20px;
+}
+
+h1,
+.swd-h1 {
+    font-size: 42px;
+}
+
+h2,
+.swd-h2 {
+    font-size: 36px;
+}
+
+h3,
+.swd-h3 {
+    font-size: 30px;
+}
+
+h4,
+.swd-h4 {
+    font-size: 28px;
+}
+
+h5,
+.swd-h5 {
+    font-size: 24px;
+}
+
+h6,
+.swd-h6 {
+    font-size: 22px;
+}
+
+
+
+
+strong,
+b {
+    font-weight: bold;
+}
+
+em {
+    font-style: italic;
+}
+
+a {
+    // STYLES OF ALL LINKS GOES HERE
+}
+
+ul {
+    list-style: disc;
+}
+
+ol {
+    list-style: decimal;
+}
+
+ul,
+ol {
+    padding-left: 20px;
+}
+
+
+
+
+
+/*
+* Responsive Design
+*/
+@media only screen and (max-width: 1025px) {
+    .swd-body-inner {
+        overflow-x: hidden;
+    }
+
+}
+
+@media only screen and (max-width: 768px) {
+    body {
+        font-size: 14px;
+    }
+
+    .swd-container {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+}
+
+// 575px
+@media (max-width: 768px) {
+
+    .swd-container {
+        padding-left: 16px;
+        padding-right: 16px;
+    }
+}
+
+@media (max-width: 270px) {
+    html{
+        min-width: 270px;
+    }
+}
