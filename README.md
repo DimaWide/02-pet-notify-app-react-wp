@@ -4,7 +4,8 @@ Name: Notesty
 
 A feature-rich, responsive Notes Management application built with React and integrated with a custom WordPress REST API. The app allows users to manage their notes efficiently with features like authentication, registration, CRUD operations, pagination, search, theme switching, a rich text editor, and user profile management.
 
-Screenshots: [Main](https://github.com/DimaWide/02-pet-notify-app-react-wp/blob/main/src/img/main.png) | [Main Dark](https://github.com/DimaWide/02-pet-notify-app-react-wp/blob/main/src/img/main-dark.png)   
+Screenshots:    
+[Main](https://github.com/DimaWide/02-pet-notify-app-react-wp/blob/main/src/img/main.png) | [Main Dark](https://github.com/DimaWide/02-pet-notify-app-react-wp/blob/main/src/img/main-dark.png)   
 [Profile](https://github.com/DimaWide/02-pet-notify-app-react-wp/blob/main/src/img/profile.png) | [Profile Dark](https://github.com/DimaWide/02-pet-notify-app-react-wp/blob/main/src/img/profile-dark.png)   
 [Login](https://github.com/DimaWide/02-pet-notify-app-react-wp/blob/main/src/img/login.png) | [Register](https://github.com/DimaWide/02-pet-notify-app-react-wp/blob/main/src/img/register.png)   
 
