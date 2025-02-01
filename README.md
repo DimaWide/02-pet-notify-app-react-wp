@@ -1,6 +1,4 @@
-# Notes App
-
-Name: Notesty
+## Notesty
 
 A feature-rich, responsive Notes Management application built with React and integrated with a custom WordPress REST API. The app allows users to manage their notes efficiently with features like authentication, registration, CRUD operations, pagination, search, theme switching, a rich text editor, and user profile management.
 
