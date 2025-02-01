@@ -9,9 +9,6 @@ const PrivateRoute = ({ children }) => {
     useEffect(() => {
         if (authToken) {
 
-            // setIsValidToken(true); // Token is valid
-            // return;
-            // Make a POST request to validate the token using WordPress JWT plugin
             fetch('http://dev.wp-blog/wp-json/jwt-auth/v1/token/validate', {
                 method: 'POST',
                 headers: {
@@ -20,33 +17,29 @@ const PrivateRoute = ({ children }) => {
             })
                 .then((response) => response.json())
                 .then((data) => {
-                    // Check if the token is valid
+                    console.log(data)
                     if (data.code === 'jwt_auth_valid_token' && data.data.status === 200) {
-                        setIsValidToken(true); // Token is valid
+                        setIsValidToken(true); 
                     } else {
-                        setIsValidToken(false); // Token is invalid or expired
+                        setIsValidToken(false);
                     }
                 })
                 .catch(() => {
-                    setIsValidToken(false); // If there's an error, treat it as invalid token
+                    setIsValidToken(false); 
                 });
         } else {
-            setIsValidToken(false); // If no token is found, treat as invalid
+            setIsValidToken(false); 
         }
     }, [authToken]);
 
     if (isValidToken === null) {
-        // Display a semantic loader while validating the token
-        // <Loader active inline="centered" />;
         return;
     }
 
     if (!isValidToken) {
-        // Redirect to login if token is invalid or expired
         return <Navigate to="/login" />;
     }
 
-    // If token is valid, render the protected route
     return children;
 };
 

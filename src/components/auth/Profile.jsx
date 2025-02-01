@@ -51,7 +51,7 @@ const ProfilePage = () => {
     if (!user) {
         return (
             <Container>
-                <Loader active inline="centered" size="large">
+                <Loader className="cmp-profile-loader" active inline="centered" size="large">
                     Loading Profile...
                 </Loader>
             </Container>
@@ -63,7 +63,7 @@ const ProfilePage = () => {
             <div className="data-container">
                 <div className="swd-cntainer">
                     <Container>
-                        <Header as="h1" textAlign="center" color="blue">
+                        <Header className="data-title" as="h1" textAlign="center" color="blue">
                             Profile: {user.name}
                             <Header.Subheader>
                                 Here’s your account information.
@@ -74,7 +74,7 @@ const ProfilePage = () => {
                             <Grid stackable>
                                 <Grid.Row>
                                     <Grid.Column width={20}>
-                                        <Segment raised textAlign="center">
+                                        <Segment className="data-segment-1" raised textAlign="center">
 
                                             <Header as="h4" dividing>
                                                 Account Details

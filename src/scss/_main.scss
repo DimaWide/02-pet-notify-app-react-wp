@@ -1,36 +1,32 @@
-// body {
-//     .swd-header {
-//         margin: 0;
-//         display: none;
-//     }
-
-//     .swd-footer {
-//         margin: 0;
-//         display: none;
-//     }
-// }
-
-// main {
-//     min-height: 100vh;
-// }
-
 #root {
+
+    .cmp-profile-loader {
+        margin-top: 50px;
+    }
+
     .cmp-profile {
         margin-top: 60px;
         margin-bottom: 50px;
+
+        .data-title {
+            color: #565656 !important;
+        }
+
+        .item {
+            .header {
+                margin-bottom: 4px;
+            }
+        }
 
         * {
             &:not(i) {
                 font-family: cursive;
             }
-
         }
 
         .ui.grid>.row {
             justify-content: center;
         }
-
-
 
         .ui.padded.segment {
             width: 480px;
@@ -43,6 +39,52 @@
 
         .divided {
             text-align: left;
+        }
+
+        h1.ui.header .sub.header {
+            margin-top: 10px;
+            margin-bottom: 25px;
+        }
+
+
+    }
+}
+
+.dark-mode {
+    #root {
+        .cmp-profile {
+            .ui.dividing.header {
+                border-bottom: 1px solid rgb(255 255 255 / 20%);
+            }
+
+            .ui.divided.list>.item {
+                border-top: 1px solid rgb(255 255 255 / 15%);
+
+                &:first-child {
+                    border: none;
+                }
+            }
+
+            .ui.blue.header {
+                color: #fff !important;
+            }
+
+            h1.ui.header .sub.header {
+                color: #fff;
+            }
+
+            .ui.padded.segment {
+                background: #353535;
+            }
+
+            .data-segment-1 {
+                background: #3e3e3e;
+                color: #fff;
+
+                .header {
+                    color: #fff;
+                }
+            }
         }
     }
 }
@@ -118,10 +160,6 @@
     }
 }
 
-
-
-
-/* Стиль для временного отключения переходов */
 .no-transition * {
     transition: none !important;
 }
@@ -131,11 +169,33 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
+
 #root {
+    .cmp-login {
+        margin-top: 50px;
+        margin-bottom: 50px;
+    }
+
+    .cmp-register{
+        margin-top: 50px;
+        margin-bottom: 50px;
+    }
+
     .cmp-notes {
         padding: 0;
         padding-top: 20px;
         padding-bottom: 20px;
+        min-width: 1000px;
 
         .swd-container {
             padding-right: 20px;
@@ -155,6 +215,11 @@
 
         .data-content-title {
             display: none;
+        }
+
+        .data-btn-view {
+            background-color: #0092ff;
+            text-decoration: none !important;
         }
 
         .data-btn-delete-1 {
@@ -178,14 +243,18 @@
         }
 
         .pagination {
+            left: 24px;
+            bottom: 24px;
+            position: absolute;
+
             [type="ellipsisItem"] {
                 display: none !important;
             }
         }
 
         .ql-editor {
-            // max-height: 60vh;
-            height: calc(100vh - 304px);
+            font-family: 'Lato';
+            height: calc(100vh - 300px);
         }
 
         /* Add these styles to your CSS or in the component's CSS file */
@@ -210,18 +279,6 @@
             transform: translateX(0);
         }
 
-
-
-        // .notification.success {
-        //     background-color: #28a745;
-        //     /* Зеленый цвет для успеха */
-        // }
-
-        // .notification.error {
-        //     background-color: #dc3545;
-        //     /* Красный цвет для ошибки */
-        // }
-
         .data {
             &-content {
                 button[type="submit"] {
@@ -232,6 +289,8 @@
             &-sidebar {
                 margin-bottom: 0;
                 height: calc(100vh - 40px);
+                position: relative;
+                min-height: 460px;
 
                 input,
                 button {
@@ -257,7 +316,7 @@
                     border: none;
 
                     &.active {
-                        background-color: #0092ff;
+                        background-color: #0092ff !important;
 
                         * {
                             color: #fff;
@@ -286,6 +345,8 @@
 
                     &:nth-child(2) {
                         width: calc(100% - 400px);
+                        height: calc(100vh - 40px);
+                        min-height: 460px;
                     }
                 }
             }
@@ -396,8 +457,10 @@
     .data-list {
         list-style: none;
         padding: 0;
-        height: calc(100vh - 250px);
+        height: calc(100vh - 160px);
+        min-height: 330px;
         overflow-y: auto;
+        -webkit-mask-image: linear-gradient(0, rgba(244, 242, 237, 0) 0%, #f4f2ed 15%);
     }
 
     .data-list .bg-gray-50 {
@@ -492,16 +555,8 @@
     .ql-editor {
         min-height: 200px;
         padding: 10px;
-        // font-size: 1rem;
-        // line-height: 1.5;
     }
-
 }
-
-
-
-
-
 
 
 
@@ -510,8 +565,7 @@
 body {
 
     &.dark-mode {
-        // background-color: #121212;
-        // color: #ffffff;
+        background-color: #3b3b3b;
 
         #root {
             .cmp-header {
@@ -546,16 +600,12 @@ body {
 
     &.dark-mode {
         #root {
+
+
             .text-gray-500 {
                 color: #fff;
             }
 
-            // .ui.menu .dropdown.item .menu{
-            //     background: #646464;
-            //     a{
-            //         color: #fff !important;
-            //     }
-            // }
             .ui.pagination.menu .active.item {
                 background: #313131;
             }
@@ -564,11 +614,14 @@ body {
                 background-color: #e34c24;
             }
 
+            .data-btn-view {
+                background-color: #e34c24 !important;
+            }
+
             .cmp-notes .data-sidebar-item.active {
-                background-color: #e34c24;
-                *{
-                    color: #313131;
-                }
+                background-color: #e34c24 !important;
+
+                * {}
             }
 
             .data-list .hover\:bg-gray-100:hover {
@@ -665,7 +718,7 @@ body {
             button {
                 background-color: #3a3a3a;
                 color: #ffffff;
-                border: 1px solid #555;
+                border: 1px solid #2a2a2a;
                 border-radius: 4px;
                 /* Лёгкие скругления */
                 transition: background-color 0.3s ease, transform 0.1s ease;
@@ -702,6 +755,7 @@ body {
             .pagination {
                 background: #0a0a0a;
                 border-color: #111111;
+                position: absolute;
             }
 
             .pagination-center button {
@@ -741,23 +795,18 @@ body {
                 background-color: #3a3a3a;
             }
 
-            /* Лоадер */
             .loader {
                 color: #ffffff;
             }
 
-            /* Заголовки */
             h2,
             .data-title {
                 color: #e0e0e0;
-                border-bottom: 2px solid #444;
-                padding-bottom: 10px;
+
             }
 
-            /* Ссылки */
             a {
                 color: #fff;
-                /* Голубой оттенок */
                 text-decoration: none;
             }
 
@@ -766,11 +815,7 @@ body {
             }
 
         }
-
-        #root {}
     }
-
-
 }
 
 

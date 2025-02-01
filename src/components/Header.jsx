@@ -9,6 +9,7 @@ const Header = () => {
     const [isDarkMode, setIsDarkMode] = useState(
         localStorage.getItem("theme") === "dark"
     );
+
     useEffect(() => {
         if (isDarkMode) {
             document.body.classList.add("dark-mode");

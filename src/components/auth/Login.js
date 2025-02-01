@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import { Container, TextField, Button, Typography, Box, Alert, CircularProgress } from '@mui/material';
+import { Button, Form, Container, Header, Message, Segment, Loader } from 'semantic-ui-react';
 
 const Login = () => {
     const [username, setUsername] = useState('');
@@ -14,21 +14,16 @@ const Login = () => {
         e.preventDefault();
         setLoading(true);
         setError('');
-    
+
         try {
-            // Send request to get both access and refresh tokens
             const response = await axios.post('http://dev.wp-blog/wp-json/jwt-auth/v1/token', {
                 username,
                 password,
             });
-    
-            console.log(response)
-            // Store access token and refresh token
-            localStorage.setItem('authToken', response.data.token); // Access token
-            localStorage.setItem('refreshToken', response.data.refresh_token); // Refresh token
-    
-            // After successful login, redirect to home or dashboard page
-            navigate('/'); // Redirect to home or dashboard page after successful login
+
+            localStorage.setItem('authToken', response.data.token);
+
+            navigate('/');
         } catch (err) {
             setError('Login failed. Please check your credentials.');
             console.error('Error during login', err);
@@ -36,56 +31,48 @@ const Login = () => {
             setLoading(false);
         }
     };
-    
 
     return (
-        <Container maxWidth="xs">
-            <Box
-                component="form"
-                onSubmit={handleLogin}
-                sx={{ mt: 5, p: 3, boxShadow: 3, borderRadius: 2 }}
-            >
-                <Typography variant="h4" component="h1" align="center" gutterBottom>
+        <Container className='cmp-login' text>
+            <Segment padded="very">
+                <Header as="h2" textAlign="center">
                     Login
-                </Typography>
+                </Header>
 
-                {error && <Alert severity="error" sx={{ mb: 2 }}>{error}</Alert>}
+                {error && (
+                    <Message negative>
+                        <Message.Header>Login Error</Message.Header>
+                        <p>{error}</p>
+                    </Message>
+                )}
 
-                <TextField
-                    label="Username"
-                    variant="outlined"
-                    fullWidth
-                    required
-                    value={username}
-                    onChange={(e) => setUsername(e.target.value)}
-                    sx={{ mb: 2 }}
-                />
+                <Form onSubmit={handleLogin}>
+                    <Form.Input
+                        label="Username"
+                        placeholder="Enter your username"
+                        value={username}
+                        onChange={(e) => setUsername(e.target.value)}
+                        required
+                    />
 
-                <TextField
-                    label="Password"
-                    variant="outlined"
-                    fullWidth
-                    required
-                    type="password"
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                    sx={{ mb: 2 }}
-                />
+                    <Form.Input
+                        label="Password"
+                        type="password"
+                        placeholder="Enter your password"
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}
+                        required
+                    />
 
-                <Button
-                    type="submit"
-                    variant="contained"
-                    fullWidth
-                    sx={{ mt: 2, py: 1.5 }}
-                    disabled={loading}
-                >
-                    {loading ? <CircularProgress size={24} /> : 'Login'}
-                </Button>
+                    <Button type="submit" primary fluid disabled={loading}>
+                        {loading ? <Loader active inline size="small" /> : 'Login'}
+                    </Button>
+                </Form>
 
-                <Typography variant="body2" align="center" sx={{ mt: 2 }}>
+                <Message>
                     Don't have an account? <a href="/register">Register</a>
-                </Typography>
-            </Box>
+                </Message>
+            </Segment>
         </Container>
     );
 };
