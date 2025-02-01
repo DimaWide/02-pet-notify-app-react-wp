@@ -1,16 +1,14 @@
-# Описание проекта
-
-Это приложение позволяет пользователям покупать токены, проверять их статус и получать базовую информацию о токенах.
-
-**Ссылка на сайт:** [pump.black](https://pump.black)
-
-Скриншот: [Главная страница](https://github.com/DimaWide/wp-themes/blob/main/assets-data/pump.black/screencapture-loc-pump-black.jpg) | [Мобильный вид](https://github.com/DimaWide/wp-themes/blob/main/assets-data/pump.black/screencapture-loc-pump-black-mobile.jpg)
-
 # Notes App
+
+Name: Notesty
 
 A feature-rich, responsive Notes Management application built with React and integrated with a custom WordPress REST API. The app allows users to manage their notes efficiently with features like authentication, registration, CRUD operations, pagination, search, theme switching, a rich text editor, and user profile management.
 
-![Notes App Screenshot](path-to-your-screenshot.png)
+Screenshots: [Main](https://github.com/DimaWide/02-pet-notify-app-react-wp/blob/main/src/img/main.png) | [Main Dark](https://github.com/DimaWide/02-pet-notify-app-react-wp/blob/main/src/img/main-dark.png)
+[Profile](https://github.com/DimaWide/02-pet-notify-app-react-wp/blob/main/src/img/profile.png) | [Profile Dark](https://github.com/DimaWide/02-pet-notify-app-react-wp/blob/main/src/img/profile-dark.png)
+[Login](https://github.com/DimaWide/02-pet-notify-app-react-wp/blob/main/src/img/login.png) | [Register](https://github.com/DimaWide/02-pet-notify-app-react-wp/blob/main/src/img/register.png)
+
+![Notes App Screenshot](https://github.com/DimaWide/02-pet-notify-app-react-wp/blob/main/src/img/main.png)
 
 ---
 
@@ -45,12 +43,4 @@ A feature-rich, responsive Notes Management application built with React and int
 
 - **Backend:**  
   - WordPress REST API
-  - Custom endpoints for notes management, user profile handling, authentication, and registration
-
----
-
-## Installation
-
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/your-username/notes-app.git
+  - Custom endpoints for notes management
