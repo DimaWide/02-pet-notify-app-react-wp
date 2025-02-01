@@ -14,9 +14,6 @@ Screenshots:
 ## Features
 
 - **Authentication & Registration:**  
-  - Secure login and registration using JWT tokens stored in `localStorage`.
-  - Registration includes username, email, and password validation.
-  - Error handling for invalid credentials and server issues during login or registration.
 - **CRUD Operations:** Create, edit, update, and delete notes with a user-friendly interface.
 - **Rich Text Editor:** Use **React-Quill** for a powerful, customizable text editor with rich formatting options.
 - **Search with Debounce:** Search notes in real-time with optimized performance.
@@ -25,7 +22,7 @@ Screenshots:
 - **Notifications:** Real-time success and error messages.
 - **Custom API Integration:** Communicates with a custom WordPress REST API for data handling.
 - **Light and Dark Mode:** Toggle between light and dark themes for a comfortable user experience.
-- **User Profile Management:** View and update user profile information, including name, email, and avatar.
+- **User Profile Management:** View user profile information, including name, email, and avatar.
 - **UI with Semantic UI:** Leverages **Semantic UI React** for a modern, responsive, and accessible user interface.
 
 ---
