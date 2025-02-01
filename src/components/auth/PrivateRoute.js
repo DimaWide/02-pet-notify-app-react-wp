@@ -9,8 +9,8 @@ const PrivateRoute = ({ children }) => {
     useEffect(() => {
         if (authToken) {
 
-            setIsValidToken(true); // Token is valid
-            return;
+            // setIsValidToken(true); // Token is valid
+            // return;
             // Make a POST request to validate the token using WordPress JWT plugin
             fetch('http://dev.wp-blog/wp-json/jwt-auth/v1/token/validate', {
                 method: 'POST',

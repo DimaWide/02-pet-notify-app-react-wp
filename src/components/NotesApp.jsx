@@ -10,20 +10,17 @@ const API_URL = 'http://dev.wp-blog/wp-json/myapi/v1';
 const Notification = ({ message, type }) => {
     const [show, setShow] = useState(false);
 
-    // When a new message appears, start a timer to hide it
     useEffect(() => {
         if (message) {
-            setShow(true); // Show the notification
+            setShow(true); 
             const timer = setTimeout(() => {
-                setShow(false); // Hide the notification after 3 seconds
-            }, 2000); // Notification disappears after 3 seconds
-
-            // Clear the timer when the component unmounts
+                setShow(false); 
+            }, 2000); 
+            
             return () => clearTimeout(timer);
         }
-    }, [message]); // Effect triggers on message change
-
-    // If no message, do not render the component
+    }, [message]); 
+    
     if (!message) return null;
 
     return (
@@ -227,10 +224,9 @@ const NotesApp = () => {
                         ) : notes.length === 0 ? (
                             <p className="text-gray-500">No available notes</p>
                         ) : (
-                            <List divided  className={`data-list space-y-4 ${isLoading ? "active" : ""}`}>
+                            <List divided className={`data-list space-y-4 ${isLoading ? "active" : ""}`}>
                                 {notes.map((note) => (
                                     <List.Item
-                                        key={note.ID}
                                         key={note && note.ID} // Проверка на null перед доступом
                                         className={`data-sidebar-item bg-gray-50 p-4 rounded-lg shadow hover:bg-gray-100 cursor-pointer ${currentNote && currentNote.ID === note.ID ? "active" : "" // Проверка на null для currentNote
                                             }`}
@@ -247,12 +243,11 @@ const NotesApp = () => {
                                             }}
                                             className="text-gray-600"
                                         />
-                                     
+
                                     </List.Item>
                                 ))}
                             </List>
                         )}
-
 
                         <Pagination
                             totalPages={totalPages} // Убедитесь, что это значение — число > 0
@@ -296,8 +291,25 @@ const NotesApp = () => {
                             </div>
 
                             <div className="mb-6">
-                                <label className="block font-medium mb-2">Content</label>
-                                <ReactQuill value={content} onChange={setContent} />
+                                <label className="data-content-title block font-medium mb-2">Content</label>
+                                <ReactQuill
+                                    value={content}
+                                    onChange={setContent}
+                                    theme="snow"
+                                    style={{ width: '100%' }} // Установим 100% ширины и минимальную высоту
+                                    modules={{
+                                        toolbar: [
+                                            [{ 'header': '1' }, { 'header': '2' }, { 'font': [] }],
+                                            [{ 'list': 'ordered' }, { 'list': 'bullet' }],
+                                            [{ 'align': [] }],
+                                            ['bold', 'italic', 'underline'],
+                                            ['link'],
+                                            [{ 'indent': '-1' }, { 'indent': '+1' }],
+                                            [{ 'color': [] }, { 'background': [] }],
+                                            ['image']
+                                        ],
+                                    }}
+                                />
                             </div>
 
                             <div className="flex justify-end">

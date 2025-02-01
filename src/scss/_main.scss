@@ -18,20 +18,21 @@
     .cmp-profile {
         margin-top: 60px;
         margin-bottom: 50px;
-        *{
-            &:not(i){
+
+        * {
+            &:not(i) {
                 font-family: cursive;
             }
-       
+
         }
 
-        .ui.grid>.row{
+        .ui.grid>.row {
             justify-content: center;
         }
 
-  
 
-        .ui.padded.segment{
+
+        .ui.padded.segment {
             width: 480px;
             margin: 0 auto;
         }
@@ -46,14 +47,51 @@
     }
 }
 
+.App {
+    padding-left: 170px;
+}
+
 #root .cmp-header {
     margin-bottom: 0;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    position: fixed;
+    left: 0;
+    height: 100%;
+    background-color: #fff;
+
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    z-index: 100;
+    top: 0;
+
+    .right {
+        text-align: center;
+        justify-content: center;
+        align-items: center;
+
+        display: flex;
+        flex-direction: column;
+        row-gap: 0px;
+
+        align-items: flex-start;
+        /* text-align: center; */
+        justify-content: center;
+        /* align-items: center; */
+        margin-left: 0 !important;
+        margin-top: auto;
+    }
 
     .ui.large.menu {
         box-shadow: none;
         border: none;
         height: 60px;
+
+        height: 100vh;
+        padding: 10px 10px;
+        width: 170px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     }
 
     .logo {
@@ -96,9 +134,14 @@
 #root {
     .cmp-notes {
         padding: 0;
-        padding-top: 40px;
+        padding-top: 20px;
         padding-bottom: 20px;
 
+        .swd-container {
+            padding-right: 20px;
+            padding-left: 20px;
+            max-width: unset;
+        }
 
         .ql-container {
             padding: 0.5rem;
@@ -107,6 +150,11 @@
 
         .data-title {
             font-size: 20px;
+            display: none;
+        }
+
+        .data-content-title {
+            display: none;
         }
 
         .data-btn-delete-1 {
@@ -136,7 +184,8 @@
         }
 
         .ql-editor {
-            max-height: 60vh;
+            // max-height: 60vh;
+            height: calc(100vh - 304px);
         }
 
         /* Add these styles to your CSS or in the component's CSS file */
@@ -182,6 +231,7 @@
 
             &-sidebar {
                 margin-bottom: 0;
+                height: calc(100vh - 40px);
 
                 input,
                 button {
@@ -207,10 +257,11 @@
                     border: none;
 
                     &.active {
-                        background-color: #f3f4f6;
-                        /* Светло-серый */
-                        border-left: 4px solid #3182ce;
-                        /* Голубой акцент */
+                        background-color: #0092ff;
+
+                        * {
+                            color: #fff;
+                        }
                     }
 
                     .header {
@@ -345,6 +396,8 @@
     .data-list {
         list-style: none;
         padding: 0;
+        height: calc(100vh - 250px);
+        overflow-y: auto;
     }
 
     .data-list .bg-gray-50 {
@@ -512,8 +565,10 @@ body {
             }
 
             .cmp-notes .data-sidebar-item.active {
-                background-color: #3e3e3e;
-                border-left: 4px solid #e34c24;
+                background-color: #e34c24;
+                *{
+                    color: #313131;
+                }
             }
 
             .data-list .hover\:bg-gray-100:hover {
