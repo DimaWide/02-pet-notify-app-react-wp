@@ -7,7 +7,7 @@ Screenshots:
 [Profile](https://github.com/DimaWide/02-pet-notify-app-react-wp/blob/main/src/img/profile.png) | [Profile Dark](https://github.com/DimaWide/02-pet-notify-app-react-wp/blob/main/src/img/profile-dark.png)   
 [Login](https://github.com/DimaWide/02-pet-notify-app-react-wp/blob/main/src/img/login.png) | [Register](https://github.com/DimaWide/02-pet-notify-app-react-wp/blob/main/src/img/register.png)   
 
-![Notes App Screenshot](https://github.com/DimaWide/02-pet-notify-app-react-wp/blob/main/src/img/main.png)
+![Notes App UI](https://github.com/DimaWide/02-pet-notify-app-react-wp/blob/main/src/img/ui.gif)
 
 ---
 
